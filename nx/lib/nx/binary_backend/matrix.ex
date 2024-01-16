@@ -480,8 +480,7 @@ defmodule Nx.BinaryBackend.Matrix do
       m2
       |> transpose_matrix()
       |> Enum.map(fn col ->
-        row
-        |> Enum.zip_reduce(col, 0, fn x, y, acc -> acc + x * Complex.conjugate(y) end)
+        Enum.zip_reduce(row, col, 0, fn x, y, acc -> acc + x * Complex.conjugate(y) end)
       end)
     end)
   end
@@ -491,8 +490,7 @@ defmodule Nx.BinaryBackend.Matrix do
       m2
       |> transpose_matrix()
       |> Enum.map(fn col ->
-        row
-        |> Enum.zip_reduce(col, 0, fn x, y, acc -> acc + x * y end)
+        Enum.zip_reduce(row, col, 0, fn x, y, acc -> acc + x * y end)
       end)
     end)
   end
